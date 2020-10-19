@@ -18,17 +18,22 @@ function export_gcal_to_gsheet(){
 // 1.0 Create a new Google Spreadsheet
 //
 // 2.0 Click TOOLS-->SCRIPT EDITOR
-// 2.1 Cute & Paste Script into 'Code.gs' editor; be sure to place cursor on LINE 1 before pasting
+// 2.1 Cute & Paste Script into 'Code.gs' editor; be sure to place cursor on LINE #1 before pasting
+// 2.2 Name Project; e.g., GC2GS
 //
 // 3.0 Modify the value for MYCAL to be YOUR calendar email address or one visible on your 'MY Calendars' section of your Google Calendar.
-// 3.1 Replace email address in LINE #38 with YOUR email address
+// 3.1 Replace email address in LINE #43 with YOUR email address
 //  
 // 4.0 Modify the values for events to be the date/time range you want and any search parameters to find or omit calendar entires.
-// 4.1 Replace current date range in LINE #56 with YOUR date range.
+// 4.1 Replace current date range in LINE #61 with YOUR date range.
 // note: Events can be easily filtered out/deleted once exported from the calendar
 // 
 // 5.0 Modify the search terms for events you want with any search parameters noted below in 'Explanation Section'.
-// 5.1 Replace current search terms in LINE #56 with YOUR search terms.
+// 5.1 Replace current search terms in LINE #61 with YOUR search terms.
+//
+// 6.0 Click RUN--> RUN FUNCTION--> export_gcal_to_gsheet
+// 6.1 An 'Authorization Required' window will pop up. Click 'REVIW PERMISSIONS'
+// 6.2 Click 'ALLOW'; You will see a 'Running function' note at the top of the page.  Run time depends on the date range provided; e.g., 1000 events ~ 3 min.
 //
 // Reference Websites:
 // https://developers.google.com/apps-script/reference/calendar/calendar
@@ -53,7 +58,7 @@ var cal = CalendarApp.getCalendarById(mycal);
 //    {search: 'word1+-word2'}       Search for events with word1 AND without word2
 //
 
-var events = cal.getEvents(new Date("May 01, 2020 00:00:00 CST"), new Date("October 15, 2020 23:59:59 CST"), {search: '-TED'});
+var events = cal.getEvents(new Date("May 01, 2020 00:00:00 CST"), new Date("October 15, 2020 23:59:59 CST"), {search: 'WORD1'});
 
 var sheet = SpreadsheetApp.getActiveSheet();
 // Uncomment this next line if you want to always clear the spreadsheet content before running - Note people could have added extra columns on the data though that would be lost
